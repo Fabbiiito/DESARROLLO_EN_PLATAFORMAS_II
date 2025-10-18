@@ -28,7 +28,7 @@ fun PantallaHorizontalConBotones2(
     Surface(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFFFBF79)) // 🎨 Fondo general
+            .background(Color(0xFFFFBF79)) 
     ) {
         Column(
             modifier = Modifier
@@ -37,7 +37,6 @@ fun PantallaHorizontalConBotones2(
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // 🟧 Rectángulo superior con el texto
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -54,7 +53,6 @@ fun PantallaHorizontalConBotones2(
                 )
             }
 
-            // 🟢 Fila de imágenes
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
