@@ -37,7 +37,6 @@ fun PantallaSeleccionPieza(
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // 🟧 Rectángulo con texto superior
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
