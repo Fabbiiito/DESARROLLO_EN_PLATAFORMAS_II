@@ -27,7 +27,6 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // 🔒 Mantener orientación horizontal
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
 
         setContent {
@@ -52,7 +51,6 @@ fun PantallaMenuPrincipal(
         modifier = modifier.fillMaxSize()
     ) {
         Box(modifier = Modifier.fillMaxSize()) {
-            // 🌄 Imagen de fondo
             Image(
                 painter = painterResource(id = R.drawable.fondop),
                 contentDescription = "Fondo",
@@ -60,22 +58,20 @@ fun PantallaMenuPrincipal(
                 modifier = Modifier.matchParentSize()
             )
 
-            // 🎮 Contenido principal (abajo y en fila)
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(bottom = 50.dp), // 👈 margen inferior para subir un poco los botones
+                    .padding(bottom = 50.dp), 
                 verticalArrangement = Arrangement.Bottom,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Row(
-                    horizontalArrangement = Arrangement.spacedBy(60.dp), // 👈 separación entre los botones
+                    horizontalArrangement = Arrangement.spacedBy(60.dp), 
                     verticalAlignment = Alignment.CenterVertically,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
                     Spacer(modifier = Modifier.width(100.dp)) // margen lateral izquierdo opcional
 
-                    // 🕹️ Botón "Jugar"
                     Image(
                         painter = painterResource(id = R.drawable.jugar),
                         contentDescription = "Jugar",
@@ -84,7 +80,6 @@ fun PantallaMenuPrincipal(
                             .clickable { onJugarClick() }
                     )
 
-                    // 📊 Botón "Estadísticas"
                     Image(
                         painter = painterResource(id = R.drawable.estadi),
                         contentDescription = "Estadísticas",
@@ -97,7 +92,6 @@ fun PantallaMenuPrincipal(
                 }
             }
 
-            // (Opcional) Capa transparente
             Box(
                 modifier = Modifier
                     .matchParentSize()
