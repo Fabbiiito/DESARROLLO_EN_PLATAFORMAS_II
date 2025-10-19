@@ -16,7 +16,48 @@
         <activity
             android:name=".FigF1"
             android:exported="true"
-            android:screenOrientation="landscape" />
+            />
+        <activity
+            android:name=".FigF2"
+            android:exported="true"
+            />
+        <activity
+            android:name=".FigF3"
+            android:exported="true"
+             />
+
+        <activity
+            android:name=".FigF4"
+            android:exported="true"
+             />
+
+        <activity
+            android:name=".FigF5"
+            android:exported="true"
+            />
+        <activity
+            android:name=".FigF6"
+            android:exported="true"
+            />
+        <activity
+            android:name=".FigF7"
+            android:exported="true"
+            />
+        <activity
+            android:name=".FigF8"
+            android:exported="true"
+            />
+        <activity
+            android:name=".FigF9"
+            android:exported="true"
+            />
+        <activity
+            android:name=".FigF10"
+            android:exported="true"
+            />
+
+
+
 
         <!-- Pantalla principal -->
         <activity
