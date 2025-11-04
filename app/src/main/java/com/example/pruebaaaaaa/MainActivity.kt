@@ -38,7 +38,8 @@ import androidx.compose.ui.unit.sp
 data class MyMessage(val title: String, val body:String)
 private val messages: List<MyMessage> = listOf(
     MyMessage("Franklin", "Alfred"),
-    MyMessage("Nelly", "Adriana")
+    MyMessage("Nelly", "Adriana"),
+    MyMessage("Aldahir", "Brosswy")
 )
 
 class MainActivity : ComponentActivity() {
