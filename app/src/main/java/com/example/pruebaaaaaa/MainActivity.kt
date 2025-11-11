@@ -33,6 +33,8 @@ import com.example.pruebaaaaaa.ui.theme.PruebaaaaaaTheme
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.material3.Surface
+import com.example.pruebaaaaaa.screens.firtsScreen
 
 data class Question(
     val Pregunta: String,
@@ -70,49 +72,52 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            PruebaaaaaaTheme {
-
-                    LazyColumn(
-                        modifier = Modifier
-                            .fillMaxSize()
-                            ,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        item {
-                            Spacer(modifier = Modifier.height(50.dp))
-                        }
-
-                        item {
-                            Image(
-                                painter = painterResource(id = R.drawable.ipr_5005),
-                                contentDescription = "Foto de perfil",
-                                modifier = Modifier
-                                    .size(90.dp)
-                                    .clip(CircleShape)
-                                    .background(Color.Green)
-                            )
-
-
-                        }
-                        item{
-                            MyText("Mi nombre es Franklin", Color.Green, 24)
-                            MyText("y voy a aprenderrrrr", Color.Magenta, 40)
-                        }
-
-                        item {
-                            Spacer(modifier = Modifier.height(100.dp))
-                        }
-
-                        items(preguntas) { pregunta ->
-                            cuestionario(pregunta)
-                        }
-
-                        item {
-                            Spacer(modifier = Modifier.height(30.dp))
-                        }
-                    }
-
-            }
+            PruebaaaaaaTheme{
+                Surface(color=Color.White){
+                    firtsScreen()
+                }
+//
+//                    LazyColumn(
+//                        modifier = Modifier
+//                            .fillMaxSize()
+//                            ,
+//                        horizontalAlignment = Alignment.CenterHorizontally
+//                    ) {
+//                        item {
+//                            Spacer(modifier = Modifier.height(50.dp))
+//                        }
+//
+//                        item {
+//                            Image(
+//                                painter = painterResource(id = R.drawable.ipr_5005),
+//                                contentDescription = "Foto de perfil",
+//                                modifier = Modifier
+//                                    .size(90.dp)
+//                                    .clip(CircleShape)
+//                                    .background(Color.Green)
+//                            )
+//
+//
+//                        }
+//                        item{
+//                            MyText("Mi nombre es Franklin", Color.Green, 24)
+//                            MyText("y voy a aprenderrrrr", Color.Magenta, 40)
+//                        }
+//
+//                        item {
+//                            Spacer(modifier = Modifier.height(100.dp))
+//                        }
+//
+//                        items(preguntas) { pregunta ->
+//                            cuestionario(pregunta)
+//                        }
+//
+//                        item {
+//                            Spacer(modifier = Modifier.height(30.dp))
+//                        }
+//                    }
+//
+                }
         }
     }
 }

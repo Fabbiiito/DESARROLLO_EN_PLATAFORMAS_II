@@ -11,15 +11,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.layout.padding
 
+
 @Composable
-fun firtsScreen(){
+fun SecondScreen(){
     Scaffold{ paddingValues ->
-        firstBodyContent(paddingValues)
+        SecondBodyContent(paddingValues)
     }
 }
 
 @Composable
-fun firstBodyContent(paddingValues: PaddingValues){
+fun SecondBodyContent(paddingValues: PaddingValues){
     Column (
         modifier = Modifier.fillMaxSize().padding(paddingValues),
         verticalArrangement = Arrangement.Center,
