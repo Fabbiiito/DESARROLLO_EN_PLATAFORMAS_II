@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,6 +21,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -28,6 +30,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.pruebaaaaaa.ui.theme.PruebaaaaaaTheme
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 
 data class Question(
     val Pregunta: String,
@@ -38,9 +43,9 @@ data class Question(
 )
 
 private val preguntas: List<Question> = listOf(
-    Question("¿Cuánto es 1 + 1?", "1", "2", "3", "4"),
-    Question("¿Cuánto es 3 × 4?", "7", "10", "12", "14"),
-    Question("¿Cuál es la capital de Perú?", "Arequipa", "Lima", "Cusco", "Puno"),
+    Question("¿Cuánto es 1 + 2?", "1", "2", "3", "4"),
+    Question("¿Cuánto es 3 × 6666?", "7", "10", "12", "14"),
+    Question("¿Cuál es la ctal de Perú?", "Arequipa", "Lima", "Cusco", "Puno"),
     Question("¿Cuántos continentes hay en el mundo?", "5", "6", "7", "8"),
     Question("¿Cuál es el resultado de 9 ÷ 3?", "2", "3", "4", "5"),
     Question("¿Cuál es el océano más grande?", "Atlántico", "Índico", "Pacífico", "Ártico"),
@@ -86,10 +91,16 @@ class MainActivity : ComponentActivity() {
                                     .clip(CircleShape)
                                     .background(Color.Green)
                             )
+
+
+                        }
+                        item{
+                            MyText("Mi nombre es Franklin", Color.Green, 24)
+                            MyText("y voy a aprenderrrrr", Color.Magenta, 40)
                         }
 
                         item {
-                            Spacer(modifier = Modifier.height(24.dp))
+                            Spacer(modifier = Modifier.height(100.dp))
                         }
 
                         items(preguntas) { pregunta ->
@@ -108,21 +119,28 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun cuestionario(pregunta : Question) {
+
+    var expanded by remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
             .padding(horizontal = 16.dp, vertical = 8.dp)
-            .fillMaxWidth(),
+            .fillMaxWidth()
+            .clickable{expanded=!expanded},
         horizontalAlignment = Alignment.Start
     ) {
         Spacer(modifier = Modifier.height(10.dp))
-        MyText(pregunta.Pregunta, Color.Blue, 20)
+        MyText(pregunta.Pregunta, Color.Blue, 20,
+            if (expanded) Int.MAX_VALUE else 1)
 
         Spacer(modifier = Modifier.height(4.dp))
 
-        MyText("a) "+pregunta.a, Color.Black, 16)
-        MyText("b) "+pregunta.b, Color.Black, 16)
-        MyText("c) "+pregunta.c, Color.Black, 16)
-        MyText("d) "+pregunta.d, Color.Black, 16)
+        MaterialTheme() {
+            MyText("a) "+pregunta.a, Color.Black, 16)
+            MyText("b) "+pregunta.b, Color.Black, 16)
+            MyText("c) "+pregunta.c, Color.Black, 16)
+            MyText("d) "+pregunta.d, Color.Black, 16)
+        }
+
     }
 
     Spacer(modifier = Modifier
@@ -133,10 +151,15 @@ fun cuestionario(pregunta : Question) {
 }
 
 @Composable
-fun MyText(text: String, color:Color, tam:Int ){
-    Text(text, color=color, fontSize = tam.sp, modifier = Modifier.padding(vertical = 2.dp))
+fun MyText(text: String, color:Color, tam:Int, lines:Int = Int.MAX_VALUE ){
+    Text(
+        text,
+        color=color,
+        fontSize = tam.sp,
+        modifier = Modifier.padding(vertical = 2.dp),
+        maxLines = lines
+        )
 }
-
 
 
 
