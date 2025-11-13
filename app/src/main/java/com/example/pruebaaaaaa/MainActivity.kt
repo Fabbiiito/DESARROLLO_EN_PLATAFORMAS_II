@@ -34,8 +34,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.material3.Surface
-import com.example.pruebaaaaaa.screens.firtsScreen
-
+import com.example.pruebaaaaaa.navigation.AppNavigation
 data class Question(
     val Pregunta: String,
     val a: String,
@@ -74,7 +73,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             PruebaaaaaaTheme{
                 Surface(color=Color.White){
-                    firtsScreen()
+                    AppNavigation()
                 }
 //
 //                    LazyColumn(

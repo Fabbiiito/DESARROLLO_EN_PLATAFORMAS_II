@@ -9,24 +9,28 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.Button
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.Alignment
-import androidx.compose.foundation.layout.padding
+
+import androidx.navigation.NavController
+import com.example.pruebaaaaaa.navigation.AppScreens
 
 @Composable
-fun firtsScreen(){
+fun firstScreen(navController: NavController){
     Scaffold{ paddingValues ->
-        firstBodyContent(paddingValues)
+        SecondBodyContent(navController, paddingValues)
     }
 }
 
 @Composable
-fun firstBodyContent(paddingValues: PaddingValues){
+fun BodyContent(navController: NavController, paddingValues: PaddingValues){
     Column (
-        modifier = Modifier.fillMaxSize().padding(paddingValues),
+        modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Text("Hola navegacion")
-        Button(onClick={/*TODO*/}){
+        Button(onClick= {
+            navController.navigate(route = AppScreens.SecondScreen.route)
+        }){
             Text("navega")
         }
     }
