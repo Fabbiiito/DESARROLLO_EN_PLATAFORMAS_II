@@ -1,4 +1,4 @@
-package jumanji.desarollodeplataformasii.unap
+package edu.pe.epis.imagenes2
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("jumanji.desarollodeplataformasii.unap", appContext.packageName)
+        assertEquals("edu.pe.epis.imagenes2", appContext.packageName)
     }
 }

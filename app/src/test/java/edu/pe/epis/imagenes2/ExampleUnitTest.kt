@@ -1,4 +1,4 @@
-package jumanji.desarollodeplataformasii.unap
+package edu.pe.epis.imagenes2
 
 import org.junit.Test
 
