@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:id="@+id/date_selector_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#4CAF50"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/tv_selected_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dec 5"
+            android:textSize="24sp"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="8dp"
+        android:paddingBottom="4dp"
+        android:background="#F0F0F0">
+
+        <TextView style="@style/DayOfWeekStyle" android:text="L" />
+        <TextView style="@style/DayOfWeekStyle" android:text="M" />
+        <TextView style="@style/DayOfWeekStyle" android:text="M" />
+        <TextView style="@style/DayOfWeekStyle" android:text="J" />
+        <TextView style="@style/DayOfWeekStyle" android:text="V" />
+        <TextView style="@style/DayOfWeekStyle" android:text="S" />
+        <TextView style="@style/DayOfWeekStyle" android:text="D" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_weekly_dates"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"  android:paddingBottom="8dp"
+        android:scrollbars="none" />
+
+</LinearLayout>
