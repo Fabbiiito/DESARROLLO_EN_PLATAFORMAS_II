@@ -5,9 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [MealEntity::class], version = 1)
+@Database(entities = [MealEntity::class, UserGoalEntity::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun mealDao(): MealDao
+    abstract fun userGoalDao(): UserGoalDao
 
     companion object {
         @Volatile
@@ -19,7 +20,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "nutriax_database"
-                ).build()
+                )
+                .fallbackToDestructiveMigration() // For development simplicity, wipes data on schema change
+                .build()
                 INSTANCE = instance
                 instance
             }

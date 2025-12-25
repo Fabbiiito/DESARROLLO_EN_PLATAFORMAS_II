@@ -324,7 +324,7 @@ fun MealCard(meal: MealEntity, onDelete: () -> Unit) {
                     style = MaterialTheme.typography.labelLarge,
                     color = MaterialTheme.colorScheme.primary
                 )
-                
+
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = "${meal.calories} kcal",
@@ -380,7 +380,7 @@ fun AddMealDialog(
                     modifier = Modifier.fillMaxWidth()
                 )
                 Spacer(modifier = Modifier.height(8.dp))
-                
+
                 // Tipo de comida
                 Row(horizontalArrangement = Arrangement.SpaceBetween, modifier = Modifier.fillMaxWidth()) {
                     listOf("Desayuno", "Almuerzo", "Cena").forEach { type ->
@@ -389,14 +389,16 @@ fun AddMealDialog(
                             colors = ButtonDefaults.buttonColors(
                                 containerColor = if(mealType == type) MaterialTheme.colorScheme.primary else Color.LightGray
                             ),
-                            modifier = Modifier.weight(1f).padding(2.dp),
+                            modifier = Modifier
+                                .weight(1f)
+                                .padding(2.dp),
                             contentPadding = androidx.compose.foundation.layout.PaddingValues(0.dp)
                         ) {
                             Text(type, fontSize = 10.sp)
                         }
                     }
                 }
-                
+
                 Spacer(modifier = Modifier.height(8.dp))
                 OutlinedTextField(
                     value = calories,
@@ -412,21 +414,27 @@ fun AddMealDialog(
                         onValueChange = { protein = it },
                         label = { Text("Prot (g)") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.weight(1f).padding(end = 4.dp)
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(end = 4.dp)
                     )
                     OutlinedTextField(
                         value = carbs,
                         onValueChange = { carbs = it },
                         label = { Text("Carb (g)") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.weight(1f).padding(horizontal = 2.dp)
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(horizontal = 2.dp)
                     )
                     OutlinedTextField(
                         value = fat,
                         onValueChange = { fat = it },
                         label = { Text("Gras (g)") },
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.weight(1f).padding(start = 4.dp)
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(start = 4.dp)
                     )
                 }
             }
@@ -437,7 +445,7 @@ fun AddMealDialog(
                 val protVal = protein.toDoubleOrNull() ?: 0.0
                 val carbVal = carbs.toDoubleOrNull() ?: 0.0
                 val fatVal = fat.toDoubleOrNull() ?: 0.0
-                
+
                 if (name.isNotEmpty()) {
                     onSave(name, calVal, protVal, carbVal, fatVal, mealType)
                 }
@@ -509,7 +517,7 @@ fun EditGoalsDialog(
                 val protVal = protein.toDoubleOrNull() ?: 150.0
                 val carbVal = carbs.toDoubleOrNull() ?: 250.0
                 val fatVal = fat.toDoubleOrNull() ?: 70.0
-                
+
                 onSave(UserGoals(calVal, protVal, carbVal, fatVal))
             }) {
                 Text("Guardar Metas")
@@ -534,7 +542,7 @@ fun CalendarScreen(viewModel: MainViewModel) {
     var selectedDateIndex by remember { mutableIntStateOf(findTodayPosition(allDates)) }
     val initialPosition = remember { findTodayPosition(allDates) }
     val listState = rememberLazyListState()
-    
+
     // Estado para los diálogos
     var showAddDialog by remember { mutableStateOf(false) }
     var showGoalsDialog by remember { mutableStateOf(false) }
@@ -626,7 +634,9 @@ fun CalendarScreen(viewModel: MainViewModel) {
             }
         }
     ) { padding ->
-        Column(modifier = Modifier.fillMaxSize().padding(padding)) {
+        Column(modifier = Modifier
+            .fillMaxSize()
+            .padding(padding)) {
             // Encabezado (equivalente a tv_selected_date y el clic del header)
             Row(
                 modifier = Modifier
@@ -751,7 +761,7 @@ fun CalendarScreen(viewModel: MainViewModel) {
                 }
             )
         }
-        
+
         if (showGoalsDialog) {
             EditGoalsDialog(
                 currentGoals = userGoals,
@@ -804,21 +814,21 @@ fun uriToBitmap(context: Context, uri: Uri): Bitmap? {
 // =========================================================================
 
 class MainViewModel(private val mealDao: MealDao) : ViewModel() {
-    
+
     // Estado de las metas del usuario (en memoria, idealmente iría en DataStore)
     private val _userGoals = MutableStateFlow(UserGoals())
     val userGoals = _userGoals.asStateFlow()
-    
+
     fun updateGoals(newGoals: UserGoals) {
         _userGoals.value = newGoals
     }
-    
+
     fun insertMeal(meal: MealEntity) {
         viewModelScope.launch {
             mealDao.insertMeal(meal)
         }
     }
-    
+
     fun deleteMeal(meal: MealEntity) {
         viewModelScope.launch {
             mealDao.deleteMeal(meal)
@@ -828,7 +838,7 @@ class MainViewModel(private val mealDao: MealDao) : ViewModel() {
     fun getMealsForDay(start: Long, end: Long): Flow<List<MealEntity>> {
         return mealDao.getMealsForDay(start, end)
     }
-    
+
     // Helper scope
     val viewModelScope = kotlinx.coroutines.CoroutineScope(Dispatchers.Main)
 }
@@ -1112,7 +1122,9 @@ fun VisionScreen(speak: (String) -> Unit, viewModel: MainViewModel) {
             )
 
             Row(
-                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 8.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Button(
