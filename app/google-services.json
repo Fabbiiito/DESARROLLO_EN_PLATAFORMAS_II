@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "574141753178",
+    "project_id": "alimentosapp-255cb",
+    "storage_bucket": "alimentosapp-255cb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574141753178:android:ad5afab5d5e94d56507563",
+        "android_client_info": {
+          "package_name": "desarollodeplataformasii.nutriaxDBP"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAg7iQN3w_m-3AHBP_RZ_XZ_K6e64KiUsk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

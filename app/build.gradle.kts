@@ -1,12 +1,8 @@
-import org.gradle.kotlin.dsl.implementation
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
-
-    // 4. Serialización
     alias(libs.plugins.kotlin.serialization)
 }
 
@@ -58,7 +54,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -75,20 +70,7 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    // RecyclerView (Necesario para la lista deslizable de fechas)
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-// Usa la versión más reciente
-// Kotlin Extensions (si usas Kotlin)
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-// O
-    // Para AppCompatActivity, findViewById, etc.
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1") // O la versión más reciente
 
-    // Para RecyclerView y PagerSnapHelper
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     // Gemini API
     implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
@@ -106,19 +88,9 @@ dependencies {
     val roomVersion = "2.6.1"
     implementation("androidx.room:room-runtime:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
-    // Usando KSP para el compilador de Room
     ksp("androidx.room:room-compiler:$roomVersion")
 
     // ViewModel Compose
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.compose.material:material-icons-extended:1.7.5")
-    // Testing
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 }
-
