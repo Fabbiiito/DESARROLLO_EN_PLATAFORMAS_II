@@ -38,6 +38,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -177,7 +179,7 @@ fun VisionScreen(speak: (String) -> Unit, viewModel: MainViewModel) {
         currentAnalysisResult = null
         try {
             val model = GenerativeModel(
-                modelName = "gemini-2.5-flash",
+                modelName = "gemini-1.5-flash",
                 apiKey = Constants.GEMINI_API_KEY
             )
             val prompt = """
@@ -251,36 +253,36 @@ fun VisionScreen(speak: (String) -> Unit, viewModel: MainViewModel) {
     }
 
     Column(
-        modifier = Modifier.Companion
+        modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
             .verticalScroll(rememberScrollState()),
-        horizontalAlignment = Alignment.Companion.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text("Análisis Nutricional con Gemini", style = MaterialTheme.typography.headlineMedium)
-        Spacer(modifier = Modifier.Companion.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         imageBitmap?.let {
             Image(
                 bitmap = it.asImageBitmap(),
                 contentDescription = "Imagen de comida seleccionada",
-                modifier = Modifier.Companion
+                modifier = Modifier
                     .fillMaxWidth()
                     .height(250.dp)
                     .padding(8.dp),
-                contentScale = ContentScale.Companion.Crop
+                contentScale = ContentScale.Crop
             )
         } ?: Box(
-            modifier = Modifier.Companion
+            modifier = Modifier
                 .fillMaxWidth()
                 .height(250.dp)
                 .padding(8.dp)
-                .background(Color.Companion.LightGray)
+                .background(Color.LightGray)
         ) {
-            Text("No hay imagen seleccionada", Modifier.Companion.align(Alignment.Companion.Center))
+            Text("No hay imagen seleccionada", Modifier.align(Alignment.Center))
         }
-        Spacer(modifier = Modifier.Companion.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Row(
-            modifier = Modifier.Companion.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly
         ) {
             Button(
@@ -309,44 +311,44 @@ fun VisionScreen(speak: (String) -> Unit, viewModel: MainViewModel) {
                 Text("Tomar Foto")
             }
         }
-        Spacer(modifier = Modifier.Companion.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = { analyzeImage() },
             enabled = !isLoading && imageBitmap != null
         ) {
             if (isLoading) {
                 CircularProgressIndicator(
-                    modifier = Modifier.Companion.size(24.dp),
-                    color = Color.Companion.White
+                    modifier = Modifier.size(24.dp),
+                    color = Color.White
                 )
-                Spacer(modifier = Modifier.Companion.width(8.dp))
+                Spacer(modifier = Modifier.width(8.dp))
                 Text("Analizando...")
             } else {
                 Text("Analizar Comida con Gemini")
             }
         }
-        Spacer(modifier = Modifier.Companion.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         Card(
-            modifier = Modifier.Companion.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth(),
             elevation = CardDefaults.cardElevation(4.dp)
         ) {
-            Column(modifier = Modifier.Companion.padding(16.dp)) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = resultText,
                     style = MaterialTheme.typography.bodyLarge
                 )
             }
         }
-        Spacer(modifier = Modifier.Companion.height(16.dp))
+        Spacer(modifier = Modifier.height(16.dp))
         if (!isLoading && currentAnalysisResult != null) {
             Text(
                 text = "Registrar en mi Agenda:",
                 style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Companion.Bold,
-                modifier = Modifier.Companion.align(Alignment.Companion.Start)
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.align(Alignment.Start)
             )
             Row(
-                modifier = Modifier.Companion.fillMaxWidth().padding(vertical = 8.dp),
+                modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                 Button(
@@ -368,7 +370,7 @@ fun VisionScreen(speak: (String) -> Unit, viewModel: MainViewModel) {
                     Text("Cena")
                 }
             }
-            Spacer(modifier = Modifier.Companion.height(16.dp))
+            Spacer(modifier = Modifier.height(16.dp))
         }
     }
 }

@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- Usamos un tema base de Android que siempre está disponible -->
+    <style name="Theme.NutriaxDBP" parent="android:Theme.DeviceDefault.NoActionBar">
+        <!-- Puedes añadir personalizaciones aquí si lo deseas -->
+    </style>
+
     <style name="DayOfWeekStyle">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
